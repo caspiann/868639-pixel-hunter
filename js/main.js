@@ -1,12 +1,13 @@
 "use strict";
 
-const LEFT_ARROW_CODE = 37;
-const RIGHT_ARROW_CODE = 39;
 const mainElement = document.querySelector(`main`);
 const bodyElement = document.querySelector(`body`);
 const screenStep = 1;
 let currentScreenNumber = 0;
-let arrowButtons;
+const Arrow = {
+  LEFT_ARROW_CODE: 37,
+  RIGHT_ARROW_CODE: 39
+};
 
 const wrap = (it) => {
   const shadow = document.createElement(`div`);
@@ -37,12 +38,11 @@ const renderScreenHandler = (index) => {
   const lastScreenNumber = screens.length - 1;
   if (index < firstScreenNumber) {
     currentScreenNumber = firstScreenNumber;
-    return;
   } else if (index > lastScreenNumber) {
     currentScreenNumber = lastScreenNumber;
-    return;
+  } else {
+    currentScreenNumber = index;
   }
-  currentScreenNumber = index;
   addScreen(currentScreenNumber);
 };
 
@@ -66,10 +66,10 @@ const arrows = `<div class="arrows__wrap">
 
 bodyElement.insertAdjacentHTML(`beforeend`, arrows);
 
-arrowButtons = document.querySelectorAll(`.arrows__btn`);
+const arrowButtonElements = document.querySelectorAll(`.arrows__btn`);
 
 const buttonChangeScreenHandler = (evt) => {
-  let [firstButton, secondButton] = arrowButtons;
+  const [firstButton, secondButton] = arrowButtonElements;
   if (evt.target === firstButton) {
     renderScreenHandler(currentScreenNumber - screenStep);
   } else if (evt.target === secondButton) {
@@ -81,10 +81,10 @@ renderScreenHandler(currentScreenNumber);
 
 document.addEventListener(`keydown`, (evt) => {
   switch (evt.keyCode) {
-    case RIGHT_ARROW_CODE:
+    case Arrow.RIGHT_ARROW_CODE:
       renderScreenHandler(currentScreenNumber + screenStep);
       break;
-    case LEFT_ARROW_CODE:
+    case Arrow.LEFT_ARROW_CODE:
       renderScreenHandler(currentScreenNumber - screenStep);
       break;
   }
