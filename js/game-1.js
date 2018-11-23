@@ -73,8 +73,6 @@ const renderGameFirstElement = () => {
       if (answers === 2) {
         renderGameSecondElement();
       }
-    } else {
-      return;
     }
   };
 
