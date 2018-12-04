@@ -1,6 +1,6 @@
 import {assert} from 'chai';
-import updateTime from './update-time';
-import {gameValue} from './game-data';
+import updateTime from '../game-logic/update-time';
+import {gameValue} from '../game-logic/game-data';
 
 describe(`updateTimer`, () => {
 

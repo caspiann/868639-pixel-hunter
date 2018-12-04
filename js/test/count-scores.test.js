@@ -1,6 +1,6 @@
 import {assert} from 'chai';
-import {gameValue} from './game-data';
-import countScores from './count-scores';
+import {gameValue} from '../game-logic/game-data';
+import countScores from '../game-logic/count-scores';
 
 let answers = [];
 

@@ -1,6 +1,6 @@
 import {assert} from 'chai';
-import changeLives from './change-lives';
-import {INITIAL_STATE} from './game-data';
+import changeLives from '../game-logic/change-lives';
+import {INITIAL_STATE} from '../game-logic/game-data';
 
 describe(`Change lives`, () => {
 
