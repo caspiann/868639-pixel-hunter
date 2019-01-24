@@ -1,3 +1,4 @@
-import renderIntroElement from './intro';
+import "@babel/polyfill";
+import App from "./application";
 
-renderIntroElement();
+App.start();

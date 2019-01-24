@@ -11,6 +11,7 @@
     "test": "npm run eslint && npm run stylelint && gulp test"
   },
   "devDependencies": {
+    "@babel/polyfill": "^7.2.5",
     "autoprefixer": "9.0.2",
     "browser-sync": "^2.26.3",
     "chai": "4.2.0",

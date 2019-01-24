@@ -1,7 +1,13 @@
-import createElementFromTemplate from './create-element-from-template';
-import renderRulesElement from './rules';
-const greetingTemplate =
-  `<section class="greeting central--blur">
+import AbstractView from "../abstract-view";
+
+export default class GreetingView extends AbstractView {
+  constructor() {
+    super();
+  }
+
+  get template() {
+    return `
+    <section class="greeting central--blur">
     <img class="greeting__logo" src="img/logo_ph-big.svg" width="201" height="89" alt="Pixel Hunter">
     <div class="greeting__asterisk asterisk"><span class="visually-hidden">Я просто красивая звёздочка</span>*</div>
     <div class="greeting__challenge">
@@ -20,15 +26,18 @@ const greetingTemplate =
         <use xlink:href="img/sprite.svg#arrow-right"></use>
       </svg>
     </button>
-  </section>`;
+  </section>
+    `;
+  }
 
-const renderGreetingElement = () => {
-  createElementFromTemplate(greetingTemplate);
-  const greetingContinueElement = document.querySelector(`.greeting__continue`);
-  greetingContinueElement.addEventListener(`click`, () => {
-    renderRulesElement();
-    greetingContinueElement.removeEventListener(`click`, renderRulesElement);
-  });
-};
+  onContinueBtnClick() {}
 
-export default renderGreetingElement;
+  bind() {
+    const continueBtnElement = this.element.querySelector(
+        `.greeting__continue`
+    );
+    continueBtnElement.addEventListener(`click`, () =>
+      this.onContinueBtnClick()
+    );
+  }
+}
